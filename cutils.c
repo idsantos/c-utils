@@ -21,6 +21,7 @@ void HitEnter(const char *msg)
 	while ((ch = getchar()) != '\n' && ch != EOF)
 		; // Do nothing except waiting for enter key or EOF marker
 }
+
 int get_input(char *src, const size_t size)
 {
 	int ch;

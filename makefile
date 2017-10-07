@@ -24,8 +24,9 @@ test: libcutils.so
 			
 install: libcutils.so
 	@echo "installing libarary $<"
-	cp $< $(INSTPATH)/lib/$<
+	cp $< $(INSTPATH)/lib/
 	cp $(INCDIR)/*.h $(INSTPATH)/include/
+	echo "$(INSTPATH)/lib">/etc/ld.so.conf.d/cutils.conf
 	ldconfig $(INSTPATH)/lib
 	
 uninstall:
@@ -36,6 +37,7 @@ uninstall:
 	rm $(INSTPATH)/include/vbstring.h
 	rm $(INSTPATH)/lib/libcutils.so
 	ldconfig $(INSTPATH)/lib
+	$(RM) /etc/ld.so.conf.d/cutils.conf
 	
 clean:
 	$(RM) *.o
